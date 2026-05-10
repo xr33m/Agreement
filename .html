@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XR33M — Service Agreement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
+<style>
+:root,[data-theme="light"]{
+  --bg:#f7f6f2;--surface:#fbfaf7;--surface-2:#f2efe9;--surface-3:#e9e3d8;--divider:#ddd7ce;--border:#d2ccbf;
+  --text:#161410;--muted:#69655e;--faint:#9b978f;--inverse:#faf8f4;--accent:#c6a263;--accent-2:#9e7c40;
+  --accent-bg:#efe4cb;--green:#2d6e2a;--green-bg:#e4f1e3;--red:#8a3c3c;--shadow-sm:0 1px 3px rgba(0,0,0,.07);
+  --shadow-md:0 8px 24px rgba(0,0,0,.08);--shadow-lg:0 20px 60px rgba(0,0,0,.12);
+  --fd:'Instrument Serif', Georgia, serif;--fb:'DM Sans', system-ui, sans-serif;
+  --xs:clamp(.75rem,.7rem + .2vw,.875rem);--sm:clamp(.9rem,.85rem + .2vw,1rem);--base:clamp(1rem,.95rem + .25vw,1.125rem);
+  --lg:clamp(1.125rem,1rem + .6vw,1.45rem);--xl:clamp(1.5rem,1.25rem + 1.2vw,2.3rem);--xxl:clamp(2.2rem,1.4rem + 3vw,4rem);
+  --r-sm:.4rem;--r-md:.65rem;--r-lg:1rem;--r-xl:1.4rem;--r-full:999px;--tr:180ms cubic-bezier(.16,1,.3,1);
+}
+[data-theme="dark"]{
+  --bg:#0f0e0d;--surface:#151412;--surface-2:#1b1917;--surface-3:#25211d;--divider:#292623;--border:#35312b;
+  --text:#ece7df;--muted:#9e978d;--faint:#6f685f;--inverse:#100f0d;--accent:#c6a263;--accent-2:#e0be83;
+  --accent-bg:#2a2217;--green:#75bd72;--green-bg:#172617;--red:#d38c8c;--shadow-sm:0 1px 3px rgba(0,0,0,.35);
+  --shadow-md:0 8px 24px rgba(0,0,0,.45);--shadow-lg:0 20px 60px rgba(0,0,0,.55);
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}body{margin:0;font-family:var(--fb);font-size:var(--base);line-height:1.65;background:var(--bg);color:var(--text)}
+a{color:inherit}img,svg,canvas{display:block;max-width:100%}button,input{font:inherit}button{cursor:pointer}h1,h2,h3,h4,p{margin:0}ul{margin:0;padding-left:1.15rem}
+#progressBar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:9999}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;z-index:9999;background:var(--accent);color:#111;padding:.5rem .8rem;border-radius:var(--r-sm)}
+.topbar{position:sticky;top:0;z-index:500;background:color-mix(in srgb,var(--surface) 90%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--divider)}
+.topbar-inner{max-width:1180px;margin:auto;padding:.85rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:flex;align-items:center;gap:.8rem}.logo-mark{width:34px;height:34px;border-radius:10px;border:1px solid var(--border);display:grid;place-items:center;background:linear-gradient(180deg,var(--surface-2),var(--surface))}
+.logo-word{font-family:var(--fd);font-style:italic;font-size:1.45rem;letter-spacing:.01em}.logo-sub{font-size:var(--xs);color:var(--faint);text-transform:uppercase;letter-spacing:.12em}
+.navlinks{display:flex;gap:.35rem;flex-wrap:wrap}.navlinks a{font-size:var(--xs);text-decoration:none;color:var(--muted);padding:.45rem .65rem;border-radius:var(--r-full);border:1px solid transparent}.navlinks a:hover{background:var(--surface-2);border-color:var(--border);color:var(--text)}
+.top-actions{display:flex;gap:.5rem;align-items:center}.iconbtn,.pillbtn{border:1px solid var(--border);background:var(--surface);color:var(--muted);border-radius:var(--r-full);padding:.62rem .9rem;display:inline-flex;gap:.45rem;align-items:center;text-decoration:none;transition:all var(--tr)}
+.iconbtn:hover,.pillbtn:hover{background:var(--surface-2);color:var(--text)}
+.page{max-width:1040px;margin:auto;padding:1.1rem 1rem 5rem}
+.fillbar{position:sticky;top:61px;z-index:450;background:color-mix(in srgb,var(--surface) 95%, transparent);backdrop-filter:blur(10px);border:1px solid var(--divider);box-shadow:var(--shadow-sm);border-radius:var(--r-xl);padding:1rem;margin:1rem 0 1.5rem;display:grid;grid-template-columns:1.4fr 1fr 1fr auto auto;gap:.8rem;align-items:end}
+.field label{display:block;font-size:var(--xs);color:var(--faint);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.35rem}.field input{width:100%;padding:.8rem .9rem;border-radius:var(--r-md);border:1px solid var(--border);background:var(--surface-2);color:var(--text);outline:none}.field input:focus{border-color:var(--accent)}
+.hero{background:linear-gradient(180deg,var(--surface),var(--surface-2));border:1px solid var(--divider);border-radius:1.6rem;overflow:hidden;box-shadow:var(--shadow-md)}
+.hero-top{padding:1.4rem 1.4rem 0;display:flex;justify-content:space-between;gap:1rem;align-items:flex-start}.client-logo{width:88px;height:88px;border:1px dashed var(--border);border-radius:1.2rem;background:var(--surface-2);display:grid;place-items:center;color:var(--faint);font-size:var(--xs);text-align:center;padding:.5rem}
+.hero-main{padding:1.2rem 1.4rem 1.5rem}.eyebrow{font-size:var(--xs);letter-spacing:.13em;text-transform:uppercase;color:var(--accent-2);margin-bottom:.6rem}.hero h1{font-family:var(--fd);font-style:italic;font-size:var(--xxl);line-height:1.02;max-width:10ch}.hero p{margin-top:.9rem;color:var(--muted);max-width:60ch}
+.meta{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--divider)}.meta-item{padding:1rem 1.4rem}.meta-label{font-size:var(--xs);text-transform:uppercase;letter-spacing:.12em;color:var(--faint);margin-bottom:.25rem}.meta-val{font-weight:600}
+.section{margin-top:1.2rem;background:var(--surface);border:1px solid var(--divider);border-radius:1.4rem;padding:1.35rem;box-shadow:var(--shadow-sm)}
+.reveal{opacity:0;transform:translateY(28px)}.reveal.visible{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1rem}.num{font-size:var(--xs);letter-spacing:.14em;text-transform:uppercase;color:var(--accent-2)}.section h2{font-family:var(--fd);font-size:var(--xl);line-height:1.05}.muted{color:var(--muted)}
+.price-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:1rem}.price-card,.terms-card{background:var(--surface-2);border:1px solid var(--border);border-radius:1.2rem;padding:1.1rem}
+.big-price{font-size:clamp(2rem,1.3rem + 2vw,3.2rem);font-weight:700;letter-spacing:-.04em}.smallcap{font-size:var(--xs);letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.guarantee{margin-top:1rem;background:var(--accent);color:#111;border-radius:1.2rem;padding:1rem 1.1rem;border:1px solid var(--accent-2);display:flex;gap:.8rem;align-items:flex-start}.star{color:#111;font-size:1.3rem;transform-origin:center}
+.value-total{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:end;padding:1rem 0 1.2rem;border-bottom:1px solid var(--divider);margin-bottom:1rem}.value-total-amt{font-family:var(--fd);font-style:italic;font-size:clamp(2rem,1.2rem + 2vw,3.4rem);line-height:1}.counter{font-variant-numeric:tabular-nums}
+.vs-item{border:1px solid var(--border);background:var(--surface-2);border-radius:1rem;padding:1rem;margin-bottom:.8rem;transition:all var(--tr)}.vs-item:last-child{margin-bottom:0}.vs-summary{display:grid;grid-template-columns:1fr auto auto;gap:1rem;align-items:start}.vs-left{display:flex;gap:.8rem}.check{width:24px;height:24px;border-radius:999px;background:var(--accent-bg);color:#111;display:grid;place-items:center;flex:none;font-size:.9rem;font-weight:700;margin-top:.1rem}.vs-name{font-weight:700}.vs-desc{color:var(--muted);font-size:var(--sm);margin-top:.22rem}.vs-value{font-weight:700;text-align:right;white-space:nowrap}.vs-value small{display:block;color:var(--faint);font-weight:500}.expand-toggle{border:1px solid var(--border);background:var(--surface);width:38px;height:38px;border-radius:999px;color:var(--muted)}.vs-item[aria-expanded="true"] .expand-toggle{transform:rotate(45deg);color:var(--text)}
+.vs-details{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s cubic-bezier(.16,1,.3,1),margin-top .35s}.vs-details-inner{overflow:hidden}.vs-item[aria-expanded="true"] .vs-details{grid-template-rows:1fr;margin-top:.8rem}.vs-details ul{color:var(--muted)}.vs-details li{margin:.35rem 0}
+.scope-note{margin-top:1rem;padding:1rem;border-radius:1rem;background:var(--accent-bg);border:1px solid color-mix(in srgb,var(--accent) 35%, var(--border));color:#211a10}
+.checklist li,.terms li{margin:.45rem 0}.terms{columns:2;column-gap:2rem}.terms li{break-inside:avoid}.sig-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.sig-card{border:1px solid var(--border);background:var(--surface-2);border-radius:1.1rem;padding:1rem}.sig-title{font-size:var(--xs);text-transform:uppercase;letter-spacing:.1em;color:var(--faint);margin-bottom:.7rem}
+.sig-canvas-wrap{border:1px solid var(--border);border-radius:.9rem;overflow:hidden;background:var(--surface)} canvas{width:100%;height:160px;touch-action:none;cursor:crosshair}.sig-meta{display:flex;justify-content:space-between;align-items:center;padding:.55rem .7rem;border-top:1px solid var(--divider);font-size:var(--xs);color:var(--faint)}.linkbtn{background:none;border:none;color:var(--muted);text-decoration:underline;padding:0}
+.acceptbar{position:sticky;bottom:14px;z-index:300;display:flex;justify-content:center;margin-top:1.2rem}.acceptwrap{display:flex;gap:.7rem;align-items:center;background:color-mix(in srgb,var(--surface) 92%, transparent);backdrop-filter:blur(10px);padding:.75rem;border:1px solid var(--border);border-radius:999px;box-shadow:var(--shadow-lg)}
+.acceptbtn{background:var(--accent);color:#111;border:none;border-radius:999px;padding:.95rem 1.25rem;font-weight:800;letter-spacing:.01em}.acceptbtn:disabled{opacity:.55}.accepted{display:none;background:var(--green-bg);border:1px solid color-mix(in srgb,var(--green) 30%, transparent);color:var(--green);padding:.9rem 1rem;border-radius:1rem;margin-top:1rem}.accepted.show{display:block}
+.footer{padding:1.6rem .4rem .2rem;color:var(--faint);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}.printonly{display:none}
+@media print{
+  #progressBar,.topbar,.fillbar,.acceptbar,.iconbtn,.pillbtn,.client-logo .placeholder,.sig-meta,.navlinks,.top-actions{display:none!important}
+  body{background:#fff;color:#111} .page{max-width:none;padding:0}.hero,.section{box-shadow:none;break-inside:avoid;page-break-inside:avoid;border-color:#ddd}
+  .reveal{opacity:1!important;transform:none!important}.printonly{display:block}.hero{margin-top:0}.section{margin-top:12px}.footer{padding-bottom:0}.client-logo{border-style:solid}
+ }
+@media (max-width:900px){
+  .fillbar{grid-template-columns:1fr 1fr}
+  .price-grid,.sig-grid,.meta{grid-template-columns:1fr}
+  .terms{columns:1}
+  .hero-top{flex-direction:column}
+  .topbar-inner{gap:.5rem}
+  .navlinks{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+}
+@media (max-width:640px){
+  /* Topbar — keep single row, hide nav links */
+  .topbar-inner{flex-direction:row;align-items:center;flex-wrap:nowrap;padding:.6rem .75rem}
+  .navlinks{display:none}
+  .logo-sub{display:none}
+  /* Page padding */
+  .page{padding:.75rem .75rem 6rem}
+  .section{padding:1rem}
+  /* Fillbar — make it scroll away, not sticky, show only first 2 fields */
+  .fillbar{
+    position:relative;top:0;
+    grid-template-columns:1fr 1fr;
+    margin:.75rem 0 1rem;
+    padding:.75rem;
+    border-radius:var(--r-lg);
+    gap:.6rem
+  }
+  .fillbar .field:nth-child(n+3){display:none}
+  .fillbar-expand-btn{display:flex!important}
+  .fillbar.expanded .field{display:flex!important}
+  .fillbar.expanded{grid-template-columns:1fr}
+  /* Hero */
+  .hero-main{padding:1rem 1rem 1.2rem}
+  .hero h1{font-size:clamp(1.8rem,8vw,2.8rem)}
+  .meta-item{padding:.75rem 1rem}
+  /* Pricing */
+  .price-grid{grid-template-columns:1fr}
+  .big-price{font-size:clamp(1.6rem,7vw,2.4rem)}
+  .guarantee{flex-direction:column;gap:.5rem}
+  /* Value stack */
+  .value-total{grid-template-columns:1fr}
+  .vs-summary{display:flex;flex-direction:column;gap:.4rem}
+  .vs-value{text-align:left;white-space:normal}
+  .expand-toggle{align-self:flex-start;margin-top:.25rem}
+  /* Signatures */
+  .sig-grid{grid-template-columns:1fr}
+  .sig-canvas-wrap canvas{height:130px}
+  /* Accept bar */
+  .acceptbar{bottom:0;left:0;right:0;margin:0;padding:.6rem .75rem;background:color-mix(in srgb,var(--surface) 96%,transparent);backdrop-filter:blur(12px);border-top:1px solid var(--divider);border-radius:0;display:block}
+  .acceptwrap{border-radius:var(--r-xl);width:100%;justify-content:space-between;padding:.65rem .85rem}
+  .acceptbtn{flex:1;font-size:var(--sm);padding:.8rem 1rem}
+}
+</style>
+</head>
+<body>
+<div id="progressBar"></div>
+<a class="skip" href="#content">Skip to content</a>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="logo-mark" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M5 18L12 6l7 12"/>
+          <path d="M8 14h8"/>
+        </svg>
+      </div>
+      <div>
+        <div class="logo-word">xr33m</div>
+        <div class="logo-sub">Service Agreement</div>
+      </div>
+    </div>
+    <nav class="navlinks" aria-label="Sections">
+      <a href="#investment">01</a>
+      <a href="#scope">02</a>
+      <a href="#client-needs">03</a>
+      <a href="#terms">04</a>
+      <a href="#signatures">05</a>
+    </nav>
+    <div class="top-actions">
+      <a class="pillbtn" id="waShare" href="#">WhatsApp</a>
+      <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
+      </button>
+      <button class="iconbtn" onclick="window.print()">Save PDF</button>
+    </div>
+  </div>
+</header>
+<main id="content" class="page">
+  <div class="fillbar">
+    <div class="field"><label>Client Business Name</label><input id="clientNameInput" placeholder="e.g. Smith Plumbing Ltd"></div>
+    <div class="field"><label>Agreement Ref</label><input id="refInput" placeholder="e.g. XR-2026-001"></div>
+    <div class="field"><label>Date</label><input id="dateInput" placeholder="DD / MM / YYYY"></div>
+    <button class="pillbtn" id="logoBtn" type="button">Add client logo</button>
+    <button class="pillbtn" onclick="window.print()" type="button">Print / PDF</button>
+  </div>
+
+  <section class="hero reveal">
+    <div class="hero-top">
+      <div>
+        <div class="eyebrow">Local SEO + GEO</div>
+        <div class="logo-word" style="font-size:1.8rem">xr33m</div>
+      </div>
+      <div class="client-logo" id="clientLogoWrap">
+        <div class="placeholder">Client logo<br>optional</div>
+        <img id="clientLogoImg" alt="Client logo" style="display:none;width:100%;height:100%;object-fit:contain;padding:.55rem">
+      </div>
+    </div>
+    <div class="hero-main">
+      <h1>Google Business + website growth agreement.</h1>
+      <p>This agreement covers XR33M’s core local growth offer: Google Business Profile optimisation plus an SEO and conversion-focused website designed to help the client rank in the local pack and generate more enquiries.</p>
+    </div>
+    <div class="meta">
+      <div class="meta-item"><div class="meta-label">Prepared for</div><div class="meta-val" data-fill="client">[Client Business Name]</div></div>
+      <div class="meta-item"><div class="meta-label">Agreement ref</div><div class="meta-val" data-fill="ref">[XR-2026-___]</div></div>
+      <div class="meta-item"><div class="meta-label">Date issued</div><div class="meta-val" data-fill="date">[DD / MM / YYYY]</div></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="investment">
+    <div class="section-head"><div><div class="num">01 Investment</div><h2>Core offer pricing.</h2></div></div>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="smallcap">Option A</div>
+        <h3 style="font-family:var(--fd);font-size:var(--xl);margin:.3rem 0 .8rem">Google Business + website</h3>
+        <div class="big-price">£1,495</div>
+        <div class="muted">One-time setup fee</div>
+        <hr style="border:none;border-top:1px solid var(--divider);margin:1rem 0">
+        <div class="big-price" style="font-size:2rem">£395</div>
+        <div class="muted">Every 4 weeks after results</div>
+      </div>
+      <div class="terms-card">
+        <div class="smallcap">Performance promise</div>
+        <p style="margin-top:.5rem">XR33M helps local businesses rank in the Top 3 on Google Maps for high-intent local search terms in 60 days — or work continues free until agreed targets are hit.</p>
+      </div>
+    </div>
+    <div class="guarantee" id="guaranteeBanner">
+      <div class="star" id="guaranteeStar">★</div>
+      <div><strong>60-day local pack guarantee.</strong> If agreed target terms are not moving into the Top 3 map positions within the agreed campaign window, work continues at no extra management fee until the target is reached.</div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="scope">
+    <div class="section-head"><div><div class="num">02 Scope of work</div><h2>What’s included.</h2></div></div>
+    <div class="value-total">
+      <div>
+        <div class="smallcap">Total value stack</div>
+        <div class="muted">What this would typically cost if sourced separately.</div>
+      </div>
+      <div class="value-total-amt"><span class="counter" data-target="6250" data-prefix="£" data-suffix="+">£0</span></div>
+    </div>
+
+    <div class="vs-item" aria-expanded="false">
+      <div class="vs-summary">
+        <div class="vs-left"><div class="check">✓</div><div><div class="vs-name">SEO &amp; Conversion-Optimised Website</div><div class="vs-desc">Built specifically to help rank higher on Google Maps and convert visitors into enquiries.</div></div></div>
+        <div class="vs-value">£1,600<small>market value</small></div><button class="expand-toggle" aria-label="Expand item">+</button>
+      </div>
+      <div class="vs-details"><div class="vs-details-inner"><ul><li>Keyword-targeted page structure focused on service + location intent.</li><li>Optimised titles, meta descriptions, headings, internal linking and image alt tags.</li><li>Service and location page siloing to give Google a clear structure.</li><li>Fast-loading, mobile-first build with clean indexing structure.</li></ul></div></div>
+    </div>
+
+    <div class="vs-item" aria-expanded="false">
+      <div class="vs-summary">
+        <div class="vs-left"><div class="check">✓</div><div><div class="vs-name">On-page content optimisation</div><div class="vs-desc">Locally targeted copy that reflects real customer searches and drives action.</div></div></div>
+        <div class="vs-value">£900<small>market value</small></div><button class="expand-toggle" aria-label="Expand item">+</button>
+      </div>
+      <div class="vs-details"><div class="vs-details-inner"><ul><li>High-converting locally targeted copy across core pages.</li><li>FAQ sections built around real search queries and buyer objections.</li><li>Content structure aligned with early AI and answer-engine visibility patterns.</li></ul></div></div>
+    </div>
+
+    <div class="vs-item" aria-expanded="false">
+      <div class="vs-summary">
+        <div class="vs-left"><div class="check">✓</div><div><div class="vs-name">Technical SEO setup</div><div class="vs-desc">The backend structure that supports indexing, speed and local relevance.</div></div></div>
+        <div class="vs-value">£850<small>market value</small></div><button class="expand-toggle" aria-label="Expand item">+</button>
+      </div>
+      <div class="vs-details"><div class="vs-details-inner"><ul><li>Local business and service schema markup.</li><li>Fast-loading pages and mobile-first performance optimisation.</li><li>Clean site architecture for crawlability and indexing.</li></ul></div></div>
+    </div>
+
+    <div class="vs-item" aria-expanded="false">
+      <div class="vs-summary">
+        <div class="vs-left"><div class="check">✓</div><div><div class="vs-name">Conversion optimisation</div><div class="vs-desc">Strategic CTA placement and trust-building elements to increase enquiry volume.</div></div></div>
+        <div class="vs-value">£750<small>market value</small></div><button class="expand-toggle" aria-label="Expand item">+</button>
+      </div>
+      <div class="vs-details"><div class="vs-details-inner"><ul><li>Click-to-call buttons placed strategically across the site.</li><li>Simple enquiry forms with low-friction conversion paths.</li><li>Trust elements including reviews, proof and clear service messaging.</li></ul></div></div>
+    </div>
+
+    <div class="vs-item" aria-expanded="false">
+      <div class="vs-summary">
+        <div class="vs-left"><div class="check">✓</div><div><div class="vs-name">Google Maps support layer</div><div class="vs-desc">Signals on the site that reinforce Google Business Profile relevance.</div></div></div>
+        <div class="vs-value">£600<small>market value</small></div><button class="expand-toggle" aria-label="Expand item">+</button>
+      </div>
+      <div class="vs-details"><div class="vs-details-inner"><ul><li>Embedded Google Map and location relevance signals.</li><li>Content alignment with Google Business Profile keywords.</li><li>Page structure that supports local pack visibility.</li></ul></div></div>
+    </div>
+
+    <div class="vs-item" aria-expanded="false">
+      <div class="vs-summary">
+        <div class="vs-left"><div class="check">✓</div><div><div class="vs-name">Google Business Profile optimisation</div><div class="vs-desc">Complete optimisation work focused on map pack improvement and high-intent visibility.</div></div></div>
+        <div class="vs-value">£1,050<small>market value</small></div><button class="expand-toggle" aria-label="Expand item">+</button>
+      </div>
+      <div class="vs-details"><div class="vs-details-inner"><ul><li>Profile category, service and description optimisation.</li><li>Image, relevance and profile completeness work.</li><li>Location and keyword alignment with website content.</li></ul></div></div>
+    </div>
+
+    <div class="vs-item" aria-expanded="false">
+      <div class="vs-summary">
+        <div class="vs-left"><div class="check">✓</div><div><div class="vs-name">Estimated client saving</div><div class="vs-desc">Compared to sourcing strategy, build, technical SEO and GBP optimisation separately.</div></div></div>
+        <div class="vs-value"><span class="counter" data-target="4750" data-prefix="£">£0</span><small>estimated saving</small></div><button class="expand-toggle" aria-label="Expand item">+</button>
+      </div>
+      <div class="vs-details"><div class="vs-details-inner"><ul><li>Single supplier, single workflow and one fixed setup instead of multiple subcontractors.</li><li>Cleaner execution between website, GBP and local ranking strategy.</li></ul></div></div>
+    </div>
+
+    <div class="scope-note"><strong>Scope control:</strong> All websites are built using a proven structure designed for ranking and conversions. Custom functionality outside of this structure can be discussed separately.</div>
+  </section>
+
+  <section class="section reveal" id="client-needs">
+    <div class="section-head"><div><div class="num">03 What XR33M needs</div><h2>What the client provides.</h2></div></div>
+    <ul class="checklist">
+      <li>Access to the current domain, hosting and Google Business Profile where relevant.</li>
+      <li>Business details including NAP, service areas, key services and opening hours.</li>
+      <li>Photos, logos, reviews, testimonials and any existing sales collateral.</li>
+      <li>Prompt communication and reasonable feedback during build and optimisation.</li>
+      <li>Approval of content, structure and requested revisions within agreed timelines.</li>
+    </ul>
+  </section>
+
+  <section class="section reveal" id="terms">
+    <div class="section-head"><div><div class="num">04 Terms & conditions</div><h2>Commercial terms.</h2></div></div>
+    <ol class="terms">
+      <li>Setup work begins once this agreement is accepted and the setup invoice is paid or otherwise agreed in writing.</li>
+      <li>The recurring £395 fee begins only after results as defined in the agreed tracking plan.</li>
+      <li>XR33M will use reasonable professional efforts to improve local visibility and enquiry performance, but exact rankings cannot be guaranteed across every term at every time.</li>
+      <li>The Top 3 guarantee applies only to mutually agreed high-intent local search terms and only where the client provides requested access and assets promptly.</li>
+      <li>Client delays, lack of approvals or missing access may pause delivery times and any guarantee window.</li>
+      <li>Custom features, advanced integrations or functionality outside the proven structure are outside scope unless agreed separately.</li>
+      <li>Either party may end the relationship with written notice after the active term for recurring work, subject to any outstanding invoices and completed setup work.</li>
+      <li>All confidential business information shared during the engagement will be treated as confidential by both parties.</li>
+    </ol>
+  </section>
+
+  <section class="section reveal" id="signatures">
+    <div class="section-head"><div><div class="num">05 Acceptance</div><h2>Review and sign.</h2></div></div>
+    <p class="muted" style="margin-bottom:1rem">The client can review, sign digitally and confirm acceptance online. When accepted, the agreement sends a signed event to XR33M’s automation flow.</p>
+    <div class="sig-grid">
+      <div class="sig-card">
+        <div class="sig-title">XR33M signature</div>
+        <div class="sig-canvas-wrap"><canvas id="sigAgency" aria-label="XR33M signature"></canvas><div class="sig-meta"><span>Draw with mouse or finger</span><button class="linkbtn" data-clear="sigAgency">Clear</button></div></div>
+        <div class="muted" style="margin-top:.7rem">Ryan — XR33M</div>
+      </div>
+      <div class="sig-card">
+        <div class="sig-title">Client signature</div>
+        <div class="sig-canvas-wrap"><canvas id="sigClient" aria-label="Client signature"></canvas><div class="sig-meta"><span>Client signs here</span><button class="linkbtn" data-clear="sigClient">Clear</button></div></div>
+        <div class="field" style="margin-top:.7rem"><label>Client signatory name</label><input id="signatoryInput" placeholder="Full name"></div>
+      </div>
+    </div>
+    <div class="accepted" id="acceptedState"><strong>Agreement accepted.</strong> <span id="acceptedTs"></span></div>
+  </section>
+
+  <div class="acceptbar">
+    <div class="acceptwrap">
+      <span class="muted" style="font-size:var(--sm)">Ready to approve?</span>
+      <button class="acceptbtn" id="acceptBtn">I agree — let’s get started</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div>Confidential agreement issued to <span data-fill="client">[Client Business Name]</span>.</div>
+    <div>XR33M</div>
+  </footer>
+
+  <input id="logoInput" type="file" accept="image/*" hidden>
+</main>
+<script>
+(function(){
+  const d = document.documentElement;
+  const themeBtn = document.getElementById('themeToggle');
+  let currentTheme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  d.setAttribute('data-theme', currentTheme);
+  themeBtn.addEventListener('click', ()=>{
+    currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    d.setAttribute('data-theme', currentTheme);
+  });
+
+  const today = new Date();
+  const dd = String(today.getDate()).padStart(2,'0');
+  const mm = String(today.getMonth()+1).padStart(2,'0');
+  const yyyy = today.getFullYear();
+  const dateInput = document.getElementById('dateInput');
+  dateInput.value = `${dd} / ${mm} / ${yyyy}`;
+
+  const fields = {
+    client: document.getElementById('clientNameInput'),
+    ref: document.getElementById('refInput'),
+    date: dateInput
+  };
+  Object.entries(fields).forEach(([key,input])=>{
+    input.addEventListener('input', ()=>{
+      document.querySelectorAll(`[data-fill="${key}"]`).forEach(el=>{
+        const fallback = key==='client' ? '[Client Business Name]' : key==='ref' ? '[XR-2026-___]' : '[DD / MM / YYYY]';
+        el.textContent = input.value.trim() || fallback;
+      });
+    });
+    input.dispatchEvent(new Event('input'));
+  });
+
+  window.addEventListener('scroll', ()=>{
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById('progressBar').style.width = ((window.scrollY / h) * 100 || 0) + '%';
+  }, {passive:true});
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const ro = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); ro.unobserve(entry.target);} });
+  }, {threshold:.12});
+  revealEls.forEach(el=>ro.observe(el));
+
+  const counterObs = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      const el = entry.target; counterObs.unobserve(el);
+      const target = parseInt(el.dataset.target||'0',10); const prefix = el.dataset.prefix||''; const suffix = el.dataset.suffix||'';
+      let start = null; const dur = 1600;
+      function tick(ts){ if(!start) start = ts; const p = Math.min((ts-start)/dur,1); const eased = 1-Math.pow(1-p,3); const val = Math.round(target*eased); el.textContent = prefix + val.toLocaleString('en-GB') + suffix; if(p<1) requestAnimationFrame(tick); }
+      requestAnimationFrame(tick);
+    });
+  }, {threshold:.45});
+  document.querySelectorAll('.counter').forEach(el=>counterObs.observe(el));
+
+  document.querySelectorAll('.vs-item').forEach(item=>{
+    const toggle = item.querySelector('.expand-toggle');
+    const flip = ()=> item.setAttribute('aria-expanded', item.getAttribute('aria-expanded') !== 'true');
+    toggle.addEventListener('click', flip);
+    item.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); flip(); } });
+  });
+
+  function pulseStar(){
+    const star = document.getElementById('guaranteeStar');
+    if(!star) return;
+    let on = false;
+    setInterval(()=>{ on = !on; star.style.transform = on ? 'scale(1.16)' : 'scale(1)'; star.style.opacity = on ? '1' : '.82'; }, 900);
+  }
+  pulseStar();
+
+  function initSig(id){
+    const canvas = document.getElementById(id), ctx = canvas.getContext('2d'); let drawing = false;
+    function pos(e){ const r = canvas.getBoundingClientRect(); const p = e.touches ? e.touches[0] : e; return {x:(p.clientX-r.left)*(canvas.width/r.width), y:(p.clientY-r.top)*(canvas.height/r.height)}; }
+    function start(e){ e.preventDefault(); drawing=true; const p=pos(e); ctx.beginPath(); ctx.moveTo(p.x,p.y); }
+    function move(e){ if(!drawing) return; e.preventDefault(); const p=pos(e); ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--text'); ctx.lineWidth=2.2; ctx.lineCap='round'; ctx.lineJoin='round'; ctx.lineTo(p.x,p.y); ctx.stroke(); ctx.beginPath(); ctx.moveTo(p.x,p.y); }
+    function end(){ drawing=false; ctx.beginPath(); }
+    canvas.addEventListener('mousedown',start); canvas.addEventListener('mousemove',move); window.addEventListener('mouseup',end);
+    canvas.addEventListener('touchstart',start,{passive:false}); canvas.addEventListener('touchmove',move,{passive:false}); window.addEventListener('touchend',end);
+  }
+  initSig('sigAgency'); initSig('sigClient');
+
+// Size canvases correctly for mobile DPR and container width
+function sizeCanvas(canvas) {
+  const dpr = window.devicePixelRatio || 1;
+  const w = Math.round(canvas.parentElement.getBoundingClientRect().width) || 300;
+  const h = window.innerWidth < 640 ? 130 : 160;
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  canvas.style.width = w + 'px';
+  canvas.style.height = h + 'px';
+  canvas.getContext('2d').scale(dpr, dpr);
+}
+['sigAgency','sigClient'].forEach(id => {
+  const c = document.getElementById(id);
+  sizeCanvas(c);
+  new ResizeObserver(() => sizeCanvas(c)).observe(c.parentElement);
+});
+  document.querySelectorAll('[data-clear]').forEach(btn=> btn.addEventListener('click', ()=>{ const c = document.getElementById(btn.dataset.clear); c.getContext('2d').clearRect(0,0,c.width,c.height); }));
+
+  document.getElementById('logoBtn').addEventListener('click', ()=> document.getElementById('logoInput').click());
+  document.getElementById('logoInput').addEventListener('change', e=>{
+    const file = e.target.files && e.target.files[0]; if(!file) return; const reader = new FileReader();
+    reader.onload = ev => { document.getElementById('clientLogoImg').src = ev.target.result; document.getElementById('clientLogoImg').style.display='block'; document.querySelector('#clientLogoWrap .placeholder').style.display='none'; };
+    reader.readAsDataURL(file);
+  });
+
+  const wa = document.getElementById('waShare');
+  wa.addEventListener('click', e=>{
+    e.preventDefault();
+    const client = fields.client.value.trim() || 'your business';
+    const msg = `Hi, here is your XR33M service agreement for ${client}.` + (location.href.startsWith('http') ? ` ${location.href}` : '');
+    window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+  });
+
+  document.getElementById('acceptBtn').addEventListener('click', async ()=>{
+
+  const btn = document.getElementById('acceptBtn');
+
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  const clientName = fields.client.value.trim() || 'Unknown';
+  const agreementRef = fields.ref.value.trim() || `XR-${Date.now()}`;
+  const issuedDate = fields.date.value.trim();
+  const signatoryName = document.getElementById('signatoryInput').value.trim() || 'Unknown';
+  const signedAt = new Date().toISOString();
+
+  // Create permanent signed URL
+  const signedUrl =
+    `${location.origin}${location.pathname}` +
+    `?signed=1` +
+    `&client=${encodeURIComponent(clientName)}` +
+    `&ref=${encodeURIComponent(agreementRef)}` +
+    `&date=${encodeURIComponent(issuedDate)}` +
+    `&signatory=${encodeURIComponent(signatoryName)}` +
+    `&signed_at=${encodeURIComponent(signedAt)}`;
+
+  const payload = {
+    event: 'agreement_signed',
+    client_name: clientName,
+    agreement_ref: agreementRef,
+    issued_date: issuedDate,
+    signatory_name: signatoryName,
+    signed_at: signedAt,
+    agreement_url: signedUrl
+  };
+
+  try {
+    await fetch('https://hook.eu2.make.com/grt2x8erazm4s6b8m64lenk9lmihy2sx', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
+  } catch(err) {}
+
+  // Redirect to frozen signed version
+  window.location.href = signedUrl;
+
+});
