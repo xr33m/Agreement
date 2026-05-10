@@ -360,6 +360,47 @@ a{color:inherit}img,svg,canvas{display:block;max-width:100%}button,input{font:in
     input.dispatchEvent(new Event('input'));
   });
 
+  // Load signed agreement from URL params
+const params = new URLSearchParams(window.location.search);
+
+if(params.get('signed') === '1'){
+
+  fields.client.value = params.get('client') || '';
+  fields.ref.value = params.get('ref') || '';
+  fields.date.value = params.get('date') || '';
+
+  document.getElementById('signatoryInput').value =
+    params.get('signatory') || '';
+
+  Object.entries(fields).forEach(([key,input])=>{
+    input.dispatchEvent(new Event('input'));
+  });
+
+  // Lock agreement
+  document.querySelectorAll('input').forEach(i=> i.disabled = true);
+
+  const btn = document.getElementById('acceptBtn');
+  btn.disabled = true;
+  btn.textContent = 'Agreement Signed';
+
+  document.getElementById('acceptedState').classList.add('show');
+
+  const signedAt = params.get('signed_at');
+
+  if(signedAt){
+    const stamp = new Date(signedAt).toLocaleString('en-GB',{
+      day:'2-digit',
+      month:'long',
+      year:'numeric',
+      hour:'2-digit',
+      minute:'2-digit'
+    });
+
+    document.getElementById('acceptedTs').textContent =
+      `Accepted on ${stamp}.`;
+  }
+
+}
   window.addEventListener('scroll', ()=>{
     const h = document.documentElement.scrollHeight - window.innerHeight;
     document.getElementById('progressBar').style.width = ((window.scrollY / h) * 100 || 0) + '%';
